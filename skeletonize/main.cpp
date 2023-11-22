@@ -273,7 +273,7 @@ int main(int argc, char** argv)
 {
     // Read the image file as
     // imread("default.jpg");
-    Mat image = imread("./images/placa.tif",IMREAD_GRAYSCALE);
+    Mat image = imread("../images/placa.tif",IMREAD_GRAYSCALE);
   
     // Error Handling
     if (image.empty()) {

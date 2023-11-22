@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.23)
+project( skeletonize )
+find_package( OpenCV REQUIRED )
+include_directories(${OpenCV_INCLUDE_DIRS})
+add_executable( skeletonize main.cpp)
+target_link_libraries( skeletonize ${OpenCV_LIBS} )
