@@ -266,14 +266,37 @@ void skeletonize(Mat& img, int maxIter) {
    
 }
 
+Mat grayscaleToBinary(Mat& image,uint8_t threshold)
+{
+    int cn = image.channels();
+    Mat bin = Mat::zeros(image.size(), CV_8UC1);
+
+    for(int i=0;i<bin.rows;i++)
+    {
+        for(int j=0;j<bin.cols;j++)
+        {   
+            uint8_t gray = image.at<uint8_t>(i,j);
+
+            if(gray > threshold)
+            {
+                bin.at<uint8_t>(i, j) = 0;
+            }else
+            {
+                bin.at<uint8_t>(i, j) = 255;
+            }   
+        }
+    }
+    return bin;
+}
 
 
 //g++ main.cpp -o main -lopencv_core -lopencv_highgui -lopencv_imgcodecs -lopencv_imgproc
 int main(int argc, char** argv)
 {
-    // Read the image file as
+    // Read the image file as 
     // imread("default.jpg");
-    Mat image = imread("../images/placa.tif",IMREAD_GRAYSCALE);
+    Mat image = imread("./images/homem2.jpg",IMREAD_GRAYSCALE);
+    Mat bin = grayscaleToBinary(image,240);
   
     // Error Handling
     if (image.empty()) {
@@ -285,10 +308,10 @@ int main(int argc, char** argv)
         return -1;
     }
    
-    skeletonize(image,200);
+    skeletonize(bin,200);
 
 
-    imshow("Imagem Skeletonizada", image);
+    imshow("Imagem Skeletonizada", bin);
     waitKey(0);
     
     //waitKey(0);
