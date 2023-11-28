@@ -210,7 +210,7 @@ Mat circularStructuringElement(int radius) {
     return element;
 }
 
-bool ZhangSuen(Mat& img, int iter) {
+bool ZhangSuen(Mat& img, int etapa) {
     Mat marker = Mat::zeros(img.size(), CV_8UC1);
 
     bool change = false;
@@ -234,8 +234,8 @@ bool ZhangSuen(Mat& img, int iter) {
             //quantidade de pixels não zero em volta de p1
             int B = (p2 + p3 + p4 + p5 + p6 + p7 + p8 + p9)/255;
 
-            int m1 = (iter == 0 && p2 * p4 * p6 == 0 && p4 * p6* p8 == 0 ) && (A == 1) && p1 == 255;// passo 1 de iterações
-            int m2 = (iter == 1 && p2 * p4 * p8 == 0 && p2 * p6 * p8 == 0) && (A == 1) && p1 == 255; // passo 2 de iterações
+            int m1 = (etapa == 0 && p2 * p4 * p6 == 0 && p4 * p6* p8 == 0 ) && (A == 1) && p1 == 255;// passo 1 de iterações
+            int m2 = (etapa == 1 && p2 * p4 * p8 == 0 && p2 * p6 * p8 == 0) && (A == 1) && p1 == 255; // passo 2 de iterações
 
             if (B >= 2 && B <= 6 && A == 1 && m1) {
                 marker.at<uchar>(i, j) = 255;
