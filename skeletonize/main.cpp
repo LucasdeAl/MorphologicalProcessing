@@ -257,13 +257,11 @@ void skeletonize(Mat& img, int maxIter) {
     bool change1 = true;
     bool change2 = true;
     int i = 0;
-    while ((change1||change2) && i < maxIter)
-    {
+    while ((change1||change2) && i < maxIter){
         change1 = ZhangSuen(img, 0);
         change2 = ZhangSuen(img,1);
         i++;
     }
-   
 }
 
 Mat grayscaleToBinary(Mat& image,uint8_t threshold)
@@ -293,17 +291,16 @@ Mat grayscaleToBinary(Mat& image,uint8_t threshold)
 //g++ main.cpp -o main -lopencv_core -lopencv_highgui -lopencv_imgcodecs -lopencv_imgproc
 int main(int argc, char** argv)
 {
-    // Read the image file as 
-    // imread("default.jpg");
-    Mat image = imread("./images/homem2.jpg",IMREAD_GRAYSCALE);
-    Mat bin = grayscaleToBinary(image,240);
-  
-    // Error Handling
+    
+    Mat image = imread("./images/silhueta.png",IMREAD_GRAYSCALE);
+    Mat bin = grayscaleToBinary(image,45);
+
+    //Mat image = imread("./images/cavalo.jpeg",IMREAD_GRAYSCALE);
+    //Mat bin = grayscaleToBinary(image,45);
+
     if (image.empty()) {
         cout << "Image File "
              << "Not Found" << endl;
-  
-        // wait for any key press
         cin.get();  
         return -1;
     }
