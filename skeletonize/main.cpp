@@ -292,11 +292,14 @@ Mat grayscaleToBinary(Mat& image,uint8_t threshold)
 int main(int argc, char** argv)
 {
     
-    Mat image = imread("./images/silhueta.png",IMREAD_GRAYSCALE);
-    Mat bin = grayscaleToBinary(image,45);
-
-    //Mat image = imread("./images/cavalo.jpeg",IMREAD_GRAYSCALE);
+    //Mat image = imread("../images/silhueta.png",IMREAD_GRAYSCALE);
     //Mat bin = grayscaleToBinary(image,45);
+
+    //Mat image = imread("../images/cavalo.jpeg",IMREAD_GRAYSCALE);
+    //Mat bin = grayscaleToBinary(image,45);
+    
+    Mat image = imread("../images/godzilla.jpg",IMREAD_GRAYSCALE);
+    Mat bin = grayscaleToBinary(image,150);
 
     if (image.empty()) {
         cout << "Image File "
